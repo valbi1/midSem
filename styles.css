@@ -1,0 +1,266 @@
+/*
+B4 Explanation in Micro:
+   Because Flexbox is so good at allocating space along a single axis, it was selected for the two-column layout.
+   The two primary portions can be positioned side by side on larger screens with this simple and efficient method.
+*/
+
+/* B2: CSS Custom Properties for a refined color palette */
+:root {
+    --color-background: #f4f7f9;
+    --color-text-base: #333d49;
+    --color-text-muted: #8b95a1;
+    --color-primary: #3498db;
+    --color-accent: #2ecc71;
+    --color-danger: #e74c3c;
+    --border-color: #dfe3e8;
+    --card-background: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.07);
+    --focus-ring-color: #85c1e9;
+}
+
+/* --- General Styles and Mobile-First Layout --- */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    background-color: var(--color-background);
+    color: var(--color-text-base);
+    line-height: 1.6;
+}
+
+/* B5: Base image styles for responsiveness */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Removes bottom space under the image */
+}
+
+.site-header {
+    text-align: center;
+    padding: 2rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--card-background);
+}
+
+h1 {
+    margin: 0 0 0.5rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+#opportunity-counter {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+}
+
+.filter-nav {
+    padding: 1rem;
+    background-color: var(--card-background);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.filter-controls {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.filter-btn {
+    padding: 0.5rem 1.2rem;
+    border: 1px solid var(--border-color);
+    background-color: transparent;
+    color: var(--color-text-muted);
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+}
+
+.filter-btn:hover {
+    background-color: #f1f3f5;
+    color: var(--color-text-base);
+}
+
+.filter-btn.active {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+}
+
+/* B1: Improved visible focus indicator for accessibility */
+:focus-visible {
+    outline: 3px solid var(--focus-ring-color);
+    outline-offset: 2px;
+}
+input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--focus-ring-color);
+}
+
+
+.content-area {
+    padding: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.opportunity-list h2 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--color-text-base);
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.add-opportunity-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+}
+
+#opportunity-title-input {
+    flex-grow: 1;
+    flex-basis: 200px;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+#opportunity-type-input,
+#add-opportunity-btn {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: var(--card-background);
+}
+
+#add-opportunity-btn {
+    background-color: var(--color-accent);
+    color: white;
+    border-color: var(--color-accent);
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+#add-opportunity-btn:hover {
+    background-color: #27ae60;
+}
+
+.error-message {
+    color: var(--color-danger);
+    background-color: #fdeded;
+    border: 1px solid var(--color-danger);
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    display: none;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.opportunity-card {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem; 
+}
+
+.bookmark-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.opportunity-card h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--color-text-base);
+}
+
+.card-details {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+    text-transform: capitalize;
+}
+
+.card-action-btn {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.save-btn {
+    background-color: transparent;
+    border: 2px solid var(--color-accent);
+    color: var(--color-accent);
+}
+.save-btn:hover {
+    background-color: var(--color-accent);
+    color: white;
+}
+
+.remove-btn {
+    background-color: transparent;
+    border: 2px solid var(--color-danger);
+    color: var(--color-danger);
+}
+.remove-btn:hover {
+    background-color: var(--color-danger);
+    color: white;
+}
+
+
+/* --- B2: Responsive Layout for Screens >= 481px --- */
+@media (min-width: 481px) {
+    .content-area {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .opportunity-list {
+        flex: 1; 
+    }
+}
+
+/* For wider screens, use a multi-column grid for cards */
+@media (min-width: 900px) {
+    .card-container {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}

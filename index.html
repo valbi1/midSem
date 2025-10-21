@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opportunity Board 8480</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <h1>Opportunity Board 8480</h1>
+        <span id="opportunity-counter">0 opportunities found</span>
+    </header>
+
+    <nav class="filter-nav">
+        <div class="filter-controls">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="internship">Internships</button>
+            <button class="filter-btn" data-filter="scholarship">Scholarships</button>
+        </div>
+    </nav>
+
+    <main class="content-area">
+        <section class="opportunity-list">
+            <h2>Available Opportunities</h2>
+            <div class="add-opportunity-form">
+                <label for="opportunity-title-input" class="sr-only">New opportunity title</label>
+                <input type="text" id="opportunity-title-input" placeholder="Enter opportunity title...">
+                
+                <label for="opportunity-type-input" class="sr-only">Opportunity type</label>
+                <select id="opportunity-type-input">
+                    <option value="internship">Internship</option>
+                    <option value="scholarship">Scholarship</option>
+                </select>
+
+                <button id="add-opportunity-btn">Add</button>
+            </div>
+            <div id="error-message" class="error-message" role="alert"></div>
+            <div id="available-list" class="card-container">
+                <!-- Opportunity cards will be inserted here by JavaScript -->
+                <!-- Example of a card with the bookmark image: -->
+                <div class="opportunity-card">
+                    <div class="card-header">
+                        <h3>Sample Opportunity Title</h3>
+                        <img src="bookmark.png" alt="Bookmark icon" class="bookmark-icon">
+                    </div>
+                    <div class="card-details">
+                        Internship
+                    </div>
+                    <button class="card-action-btn save-btn">Save</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="opportunity-list">
+            <h2>Saved Opportunities</h2>
+            <div id="saved-list" class="card-container">
+                <!-- Saved opportunity cards will be inserted here by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
